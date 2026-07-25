@@ -1,6 +1,9 @@
+console.log("script.js loaded");
+alert("script.js loaded");
+
 const password = prompt("パスワードを入力してください");
 
-if (password !== "abc123") {
+if (password !== "secret") {
   document.body.innerHTML = "アクセスできません";
 }
 
