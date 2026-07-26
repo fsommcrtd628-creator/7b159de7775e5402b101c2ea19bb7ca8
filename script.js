@@ -1,41 +1,52 @@
-console.log("script.js loaded");
-alert("script.js loaded");
+const screen = document.getElementById("screen");
+const canvas = document.getElementById("fireworks");
+const ctx = canvas.getContext("2d");
 
-const password = prompt("パスワードを入力してください");
+canvas.width = innerWidth;
+canvas.height = innerHeight;
 
-if (password !== "secret") {
-  document.body.innerHTML = "アクセスできません";
-}
+let particles=[];
 
+document.body.addEventListener("click",()=>{
 
-const title=document.getElementById("title");
+    screen.classList.add("active");
 
-setTimeout(()=>{
+    for(let i=0;i<120;i++){
 
-title.animate([
+        particles.push({
+            x:innerWidth/2,
+            y:innerHeight/2,
+            vx:(Math.random()-0.5)*10,
+            vy:(Math.random()-0.5)*10,
+            life:100
+        });
 
-{
+    }
 
-opacity:0,
-
-transform:"scale(0.5)"
-
-},
-
-{
-
-opacity:1,
-
-transform:"scale(1)"
-
-}
-
-],{
-
-duration:1500,
-
-fill:"forwards"
-
+    animate();
 });
 
-},500);
+
+function animate(){
+
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+
+    particles.forEach((p,i)=>{
+
+        p.x+=p.vx;
+        p.y+=p.vy;
+        p.life--;
+
+        ctx.beginPath();
+        ctx.arc(p.x,p.y,3,0,Math.PI*2);
+        ctx.fillStyle=`hsl(${Math.random()*360},100%,60%)`;
+        ctx.fill();
+
+        if(p.life<=0)
+            particles.splice(i,1);
+
+    });
+
+    if(particles.length)
+        requestAnimationFrame(animate);
+}
