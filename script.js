@@ -1,31 +1,64 @@
-const title=document.getElementById("title");
+const title = document.getElementById("title");
 
-setTimeout(()=>{
+const messages = [
+    "HappyBirthday！🎉",
+    "本日の誕生日会楽しんでいただけました？？？",
+    "いただけましたよね😳",
+    "実は....",
+    "もう一つプレゼントがあります！！！",
+    "何か当ててみてください（当たった場合、あげます）"
+];
 
-title.animate([
 
-{
+let index = 0;
 
-opacity:0,
 
-transform:"scale(0.5)"
+function showMessage(){
 
-},
+    title.animate([
+        {
+            opacity:0,
+            transform:"scale(0.5)"
+        },
+        {
+            opacity:1,
+            transform:"scale(1)"
+        }
+    ],{
+        duration:1500,
+        fill:"forwards"
+    });
 
-{
 
-opacity:1,
+    title.textContent = messages[index];
 
-transform:"scale(1)"
+
+    index++;
+
+    if(index < messages.length){
+
+        setTimeout(()=>{
+
+            title.animate([
+                {
+                    opacity:1
+                },
+                {
+                    opacity:0
+                }
+            ],{
+                duration:1000,
+                fill:"forwards"
+            });
+
+
+            setTimeout(showMessage,1000);
+
+        },2500);
+
+    }
 
 }
 
-],{
 
-duration:1500,
-
-fill:"forwards"
-
-});
-
-},500);
+setTimeout(showMessage,500);
