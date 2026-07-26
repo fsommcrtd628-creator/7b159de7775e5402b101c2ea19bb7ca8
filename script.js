@@ -2,11 +2,11 @@ const title = document.getElementById("title");
 
 const messages = [
     "HappyBirthday！🎉",
-    "本日の誕生日会楽しんでいただけました？？？",
+    "本日の誕生日<br>会楽しんでいただけました？？？",
     "いただけましたよね😳",
     "実は....",
     "もう一つプレゼントがあります！！！",
-    "何か当ててみてください（当たった場合、あげます）"
+    "何か当ててみてください<br>（当たった場合、あげます）"
 ];
 
 
@@ -14,6 +14,8 @@ let index = 0;
 
 
 function showMessage(){
+
+    title.innerHTML = messages[index];
 
     title.animate([
         {
@@ -29,36 +31,22 @@ function showMessage(){
         fill:"forwards"
     });
 
+}
 
-    title.textContent = messages[index];
 
+// 初回表示
+showMessage();
+
+
+// タップで次へ
+document.body.addEventListener("click here",()=>{
 
     index++;
 
     if(index < messages.length){
 
-        setTimeout(()=>{
-
-            title.animate([
-                {
-                    opacity:1
-                },
-                {
-                    opacity:0
-                }
-            ],{
-                duration:1000,
-                fill:"forwards"
-            });
-
-
-            setTimeout(showMessage,1000);
-
-        },2500);
+        showMessage();
 
     }
 
-}
-
-
-setTimeout(showMessage,500);
+});
