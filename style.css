@@ -29,3 +29,22 @@ text-align:center;
 padding:8px;
 
 }
+
+#hint{
+    position:fixed;
+    bottom:40px;
+    left:50%;
+    transform:translateX(-50%);
+    color:#88aafb;
+    font-size:12px;
+    animation:blink 1.5s infinite;
+}
+
+@keyframes blink{
+    0%,100%{
+        opacity:0.3;
+    }
+    50%{
+        opacity:1;
+    }
+}

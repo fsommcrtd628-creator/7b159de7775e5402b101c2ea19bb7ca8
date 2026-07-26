@@ -2,7 +2,7 @@ const title = document.getElementById("title");
 
 const messages = [
     "HappyBirthday！🎉",
-    "本日の誕生日<br>会楽しんでいただけました？？？",
+    "本日の誕生日会<br>楽しんでいただけました？？？",
     "いただけましたよね😳",
     "実は....",
     "もう一つプレゼントがあります！！！",
@@ -26,7 +26,13 @@ function showMessage() {
             fill: "forwards"
         }
     );
-}
+
+        // 最後のメッセージなら案内を消す
+    if (index === messages.length - 1) {
+        hint.style.display = "none";
+    }
+
+  }
 
 showMessage();
 
