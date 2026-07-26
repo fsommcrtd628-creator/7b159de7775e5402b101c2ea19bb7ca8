@@ -1,52 +1,31 @@
-const screen = document.getElementById("screen");
-const canvas = document.getElementById("fireworks");
-const ctx = canvas.getContext("2d");
+const title=document.getElementById("title");
 
-canvas.width = innerWidth;
-canvas.height = innerHeight;
+setTimeout(()=>{
 
-let particles=[];
+title.animate([
 
-document.body.addEventListener("click",()=>{
+{
 
-    screen.classList.add("active");
+opacity:0,
 
-    for(let i=0;i<120;i++){
+transform:"scale(0.5)"
 
-        particles.push({
-            x:innerWidth/2,
-            y:innerHeight/2,
-            vx:(Math.random()-0.5)*10,
-            vy:(Math.random()-0.5)*10,
-            life:100
-        });
+},
 
-    }
+{
 
-    animate();
+opacity:1,
+
+transform:"scale(1)"
+
+}
+
+],{
+
+duration:1500,
+
+fill:"forwards"
+
 });
 
-
-function animate(){
-
-    ctx.clearRect(0,0,canvas.width,canvas.height);
-
-    particles.forEach((p,i)=>{
-
-        p.x+=p.vx;
-        p.y+=p.vy;
-        p.life--;
-
-        ctx.beginPath();
-        ctx.arc(p.x,p.y,3,0,Math.PI*2);
-        ctx.fillStyle=`hsl(${Math.random()*360},100%,60%)`;
-        ctx.fill();
-
-        if(p.life<=0)
-            particles.splice(i,1);
-
-    });
-
-    if(particles.length)
-        requestAnimationFrame(animate);
-}
+},500);
