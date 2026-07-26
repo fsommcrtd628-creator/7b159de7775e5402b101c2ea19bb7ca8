@@ -16,6 +16,71 @@ overflow:hidden;
 
 }
 
+.container{
+
+width:100%;
+padding:20px;
+overflow:hidden;
+
+}
+
+#title{
+
+font-size:20px;
+color:white;
+opacity:0;
+text-align:center;
+margin:0;
+
+}
+
+#hint{
+
+position:fixed;
+bottom:40px;
+left:50%;
+transform:translateX(-50%);
+color:#a0e4ff;
+font-size:12px;
+letter-spacing:2px;
+animation:blink 1.5s infinite;
+
+}
+
+@keyframes blink{
+
+0%,100%{
+
+opacity:.3;
+
+}
+
+50%{
+
+opacity:1;
+
+}
+
+}
+
+/* body{
+
+background:black;
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+height:100vh;
+
+margin:0;
+
+overflow:hidden;
+
+}
+
 #title{
 
 font-size:20px;
@@ -47,4 +112,4 @@ padding:8px;
     50%{
         opacity:1;
     }
-}
+} */
